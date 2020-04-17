@@ -15,9 +15,25 @@ class notMain:
         inptFake = ""
         ##########################################
         DT = datetime.now().strftime("%H:%M:%S.%f")
+        # Ascii art shameless stolen from https://www.asciiart.eu/mythology/dragons
+        print("""   
+                ,    ]\    /[     ,        
+               / \    )\__/(     / \       
+              /   \  (_\  /_)   /   \      
+         ____/_____\__\@  @/___/_____\____ 
+        |             |\../|              |
+        |              \__/               |
+        |           CryptoTweet           |
+        |         Offline Tester          |
+        |_________________________________|
+         |    /\ /      \  /     \ /\    | 
+         |  /   V        ))       V   \  | 
+         |/     `       //        '     \| 
+         `              V                `
+          """)
         print("Time Stamp: " + DT)
         while inptFake.lower() != "exit":
-            inptFake = input("Enter text here \n")
+            inptFake = input("Enter text here (You do not need to add @DunSuRu) \n")
             try:
                 exFake = self.Main.handle_choices(inptFake, userNameFake, createDateFake, statIDFake)
                 self.fakePrinter(userNameFake, exFake, statIDFake)
@@ -49,3 +65,5 @@ class notMain:
 
 if __name__ == '__main__':
     notMain()
+
+
