@@ -29,7 +29,7 @@ class DatabaseManager:
     def addUser(self, name, privateGlyph, publicGlyph):
         cursor = sqlite3.connect('TheForge.sqlite')
         c = cursor.cursor()
-        print("""Adding user data to Database""")
+        # print("""Adding user data to Database""")
         c.execute("INSERT INTO USERS(USERNAME, PRIVATEGLYPH, PUBLICGLYPH) VALUES (?, ?, ?)", (name, privateGlyph, publicGlyph))
         cursor.commit()
         cursor.close()
@@ -43,7 +43,8 @@ class DatabaseManager:
         cursor.commit()
         cursor.close()
         public_glyph = public_glyph[0]
-        return public_glyph
+        # print(public_glyph[0])
+        return public_glyph[0]
 
     def unbindGlyph(self, name):
         cursor = sqlite3.connect('TheForge.sqlite')
@@ -53,15 +54,16 @@ class DatabaseManager:
         cursor.commit()
         cursor.close()
         private_glyph = private_glyph[0]
-        return private_glyph
+        return private_glyph[0]
 
     def checkUser(self, name):
-        cursor = sqlite3.connect('SkyTweetRun.sqlite')
+        cursor = sqlite3.connect('TheForge.sqlite')
         c = cursor.cursor()
         c.execute("""SELECT * FROM USERS WHERE USERNAME = ? """, (name,))
         tweets = c.fetchall()
         cursor.commit()
         cursor.close()
+        # print(tweets)
         if len(tweets) == 0:
             return True
         else:
